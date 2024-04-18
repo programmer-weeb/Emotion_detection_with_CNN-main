@@ -6,22 +6,22 @@ from keras.models import model_from_json
 emotion_dict = {0: "Angry", 1: "Disgusted", 2: "Fearful", 3: "Happy", 4: "Neutral", 5: "Sad", 6: "Surprised"}
 
 # load json and create model
-json_file = open('model/emotion_model.json', 'r')
+json_file = open('emotion_model.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 emotion_model = model_from_json(loaded_model_json)
 
 # load weights into new model
-emotion_model.load_weights("model/emotion_model.h5")
+emotion_model.load_weights("emotion_model.weights.h5")
 print("Loaded model from disk")
 
 # start the webcam feed
-#cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0)
 
 # pass here your video path
 # you may download one from here : https://www.pexels.com/video/three-girls-laughing-5273028/
 # cap = cv2.VideoCapture("C:\\JustDoIt\\ML\\Sample_videos\\emotion_sample6.mp4")
-cap = cv2.VideoCapture("./theVid.mp4")
+# cap = cv2.VideoCapture("./theVid.mp4")
 
 while True:
     # Find haar cascade to draw bounding box around face
